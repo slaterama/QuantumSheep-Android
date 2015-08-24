@@ -1,0 +1,70 @@
+package com.slaterama.quantumsheep.view;
+
+import android.net.Uri;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
+
+import com.slaterama.qslib.alpha.app.pattern.Pattern;
+import com.slaterama.qslib.alpha.support.v4.app.PatternManager;
+import com.slaterama.qslib.utils.LogEx;
+import com.slaterama.quantumsheep.R;
+import com.slaterama.quantumsheep.pattern.MyMvp;
+
+public class MvpActivity extends AppCompatActivity
+		implements PatternManager.PatternCallbacks {
+
+	public final static int PATTERN_ID = 0;
+
+	private PatternManager mPatternManager;
+	private MyMvp mMyMvp;
+
+	private int mUserId;
+
+	@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_mvp);
+
+		mPatternManager = PatternManager.newInstance(this);
+		mMyMvp = (MyMvp) mPatternManager.initPattern(PATTERN_ID, null, this);
+		LogEx.d(String.format("mMyMvp=%s", mMyMvp));
+
+		mUserId = getIntent().getIntExtra("user_id", 1);
+	}
+
+	@Override
+	protected void onPostCreate(Bundle savedInstanceState) {
+		super.onPostCreate(savedInstanceState);
+
+		MvpFragmentOne fragmentOne = (MvpFragmentOne) getSupportFragmentManager().findFragmentById(R.id.mvp_fragment_one);
+		MvpFragmentTwo fragmentTwo = (MvpFragmentTwo) getSupportFragmentManager().findFragmentById(R.id.mvp_fragment_two);
+		fragmentOne.setUserId(mUserId);
+		fragmentTwo.setUserId(mUserId);
+	}
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_pattern, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+	@Override
+	public Pattern onCreatePattern(int id, Bundle args) {
+		return new MyMvp();
+	}
+}

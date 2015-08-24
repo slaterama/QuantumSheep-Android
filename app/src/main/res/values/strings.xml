@@ -1,6 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">QuantumSheep</string>
 
-    <string name="hello_world">Hello world!</string>
+    <!-- Boilerplate -->
+
+    <string name="app_name">QuantumSheep</string>
     <string name="action_settings">Settings</string>
+
+    <!-- App-wide strings -->
+
+	<string name="mvp_pattern_test">MVP Pattern Test</string>
+    <string name="mvp_pattern_test_1">MVP Pattern Test (User 1)</string>
+	<string name="mvp_pattern_test_2">MVP Pattern Test (User 2)</string>
+    <string name="login_test">Login Test</string>
+    <string name="other_stuff">Other Stuff</string>
+
+    <string-array name="main_menu">
+        <item>@string/mvp_pattern_test_1</item>
+		<item>@string/mvp_pattern_test_2</item>
+        <item>@string/login_test</item>
+        <item>@string/other_stuff</item>
+    </string-array>
+
+    <string name="toast_not_yet_supported">This feature is not yet supported.</string>
+
+	<!-- Pattern strings -->
+
+    <string name="title_activity_mvp_pattern">@string/mvp_pattern_test</string>
+	<string name="hello_first_fragment">Hello, first fragment!</string>
+	<string name="hello_second_fragment">Hello, second fragment!</string>
+	<string name="hello_third_fragment">Hello, third fragment!</string>
+
+	<string name="fragment_mvp_one_user_id_label">Id:</string>
+	<string name="fragment_mvp_one_user_first_name_label">First Name:</string>
+	<string name="fragment_mvp_one_user_last_name_label">Last Name:</string>
+	<string name="fragment_mvp_one_user_username_label">Username:</string>
+	<string name="fragment_mvp_one_user_status_label">Active</string>
+	<string name="fragment_mvp_one_user_created_at_label">Created At:</string>
+	<string name="fragment_mvp_one_user_updated_at_label">Updated At:</string>
+
+	<string name="fragment_mvp_one_user_first_name_hint">Enter your first name</string>
+	<string name="fragment_mvp_one_user_last_name_hint">Enter your last name</string>
+	<string name="fragment_mvp_one_user_username_hint">Enter your username</string>
+
+	<string name="fragment_mvp_two_user_full_name_label">Full Name:</string>
+	<string name="fragment_mvp_two_user_status_label">Status:</string>
+	<string name="fragment_mvp_two_user_updated_at_label">Updated At:</string>
+
 </resources>
