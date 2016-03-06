@@ -44,6 +44,7 @@ public class UserPresenterOne extends MyUserPresenter<UserViewOne> {
 	@Override
 	public void onUserUpdated(UpdateEvent event, User user) {
 		String propertyName = event.getPropertyName();
+		LogEx.d(String.format("propertyName=%s", propertyName));
 		try {
 			User.Property property = User.Property.valueOf(propertyName);
 			switch (property) {

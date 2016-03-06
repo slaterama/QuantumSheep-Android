@@ -3,23 +3,30 @@ package com.slaterama.quantumsheep.view;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.slaterama.quantumsheep.R;
 
-public class MainActivity extends ListActivity {
+public class MainActivity extends AppCompatActivity
+		implements AdapterView.OnItemClickListener {
+
+	private ListView mListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-		setListAdapter(new ArrayAdapter<String>(this,
+		mListView = (ListView) findViewById(android.R.id.list);
+		mListView.setOnItemClickListener(this);
+		mListView.setAdapter(new ArrayAdapter<>(this,
 				android.R.layout.simple_list_item_1,
 				getResources().getStringArray(R.array.main_menu)));
 	}
@@ -44,7 +51,7 @@ public class MainActivity extends ListActivity {
     }
 
 	@Override
-	protected void onListItemClick(ListView l, View v, int position, long id) {
+	public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 		Intent intent;
 		switch (position) {
 			case 0:
